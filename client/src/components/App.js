@@ -32,9 +32,16 @@ class App extends Component {
   handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
+    const ProtectedComponent = () => {
+      if (authFails){
+        return <Redirect to='/dash'  />
+      }
+      return <div> My Protected Component </div>
+    }
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id });
-      post("/api/initsocket", { socketid: socket.id });
+      //post("/api/initsocket", { socketid: 123 });
+
     });
   };
 
