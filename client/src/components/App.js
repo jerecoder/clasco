@@ -5,11 +5,54 @@ import LoginButton from "./pages/LoginButton.js";
 import "../utilities.css";
 import { socket } from "../client-socket.js";
 import { get, post } from "../utilities";
+<<<<<<< HEAD
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+=======
 import "./pages/Login-Page.css"
+>>>>>>> 30997567b585a3a463b419ca50ce7c4b2f53ded5
 
-/**
- * Define the "App" component as a class.
- */
+export default class App extends React.Component {
+  render() {
+
+return (
+  <div className="fx-row high">
+      <Sidebar url={ LoginButton }/>
+    <div className="page fx-col fx-grow" style = {{ width : 150, height : 150, marginLeft : 450, marginTop : 100}}>
+
+      <BrowserRouter>
+       <Switch>
+        
+            <Route path='/demo' component={ Demo }/>
+            <Route path='/audit' component={ Audits }/>
+            <Route path='/SiteMange' component={ SiteManage }/>
+            <Route path='/' component={ Login }/>
+           
+       </Switch>
+    </BrowserRouter>
+    
+    </div>
+
+    
+
+    </div>
+
+     
+    )
+
+    const dispatch = useDispatch(whyGo)
+  }
+}
+
+// this is done, app as a class
+//done
+function App() {    
+  return (
+   <div className="app">
+
+   </div>
+);
+}
+export default App;
 class App extends Component {
  
 // makes props available in this component
