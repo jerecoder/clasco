@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import LoginButton from "./pages/LoginButton.js";
-
 import "../utilities.css";
-
 import { socket } from "../client-socket.js";
-
 import { get, post } from "../utilities";
+<<<<<<< HEAD
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+=======
+import "./pages/Login-Page.css"
+>>>>>>> 30997567b585a3a463b419ca50ce7c4b2f53ded5
 
 export default class App extends React.Component {
   render() {
@@ -53,7 +54,8 @@ function App() {
 }
 export default App;
 class App extends Component {
-  // makes props available in this component
+ 
+// makes props available in this component
   constructor(props) {
     super(props);
     this.state = {
@@ -73,9 +75,16 @@ class App extends Component {
   handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
+    const ProtectedComponent = () => {
+      if (authFails){
+        return <Redirect to='/dash'  />
+      }
+      return <div> My Protected Component </div>
+    }
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id });
-      post("/api/initsocket", { socketid: socket.id });
+      //post("/api/initsocket", { socketid: 123 });
+
     });
   };
 
@@ -86,9 +95,14 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      <> 
+      <div className="title">
+        <h1>Welcome to Clasco!</h1>
+        <p>Education done different</p>
+      </div>
+      <div className="bttn">
         <Router>
-          <LoginButton
+          <LoginButton 
             path="/"
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
@@ -97,7 +111,9 @@ class App extends Component {
           <NotFound default />
         </Router>
         {/*here we should have a link for each class depending on the user id*/}
+      </div>
       </>
+ 
     );
   }
 }
