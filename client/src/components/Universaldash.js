@@ -1,4 +1,6 @@
 // Getting the kids' names
+//done
+//auth state is done
 class whyGo extends React.Component {
     render() {
         <div>
@@ -9,7 +11,7 @@ class whyGo extends React.Component {
       </select>
       <br/>
       <br/>
-      <label>Show {this.state.selectedTable}Classmates</label>
+      <label>Show {this.state.selectedTable}Students</label>
       <br/>
       <select className='columnSelect' onChange={this.onColumnChange} multiple>
         { this.renderColumnList() }
@@ -36,8 +38,8 @@ class ClickGo extends React.Component {
     render() {
         return (
         <div> 
-        <h2>Your Classmates</h2> 
-        <ClickGo kids='children' />
+        <h2>Your Students</h2> 
+        <ClickGo kids="children" />
         </div>
         );
 
@@ -121,7 +123,7 @@ class assignment extends React.Component {
           <div>
               
               <h3>
-                Assignment Upload!
+                File Upload!
               </h3>
               <div>
                   <input type="file" onChange={this.onFileChange} />
@@ -135,3 +137,9 @@ class assignment extends React.Component {
       }
     }
 export default assignment;
+
+
+
+
+
+    
